@@ -44,7 +44,7 @@ def print_report(path):
     
     for pair in char_list:
         if pair["char"].isalpha():
-            print(f"The '{pair["char"]}' character was found {pair["num"]} times")
+            print(f"{pair["char"]}: {pair["num"]}")
 
     print('--- End report ---')
 
