@@ -1,15 +1,18 @@
+from stats import get_num_words
+import sys
+
 def main():
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    book_path = sys.argv[1]
     print_report(book_path)
 
 def get_book_text(path):
     with open(path) as f:
         return f.read()
     
-def get_word_count(book):
-    num_words = len(book.split())
-    return num_words
-
 def get_char_count(book):
     book_lower = book.lower()
     char_dict = {}
@@ -32,7 +35,7 @@ def get_sorted_list(char_dict):
 
 def print_report(path):
     text = get_book_text(path)
-    num_words = get_word_count(text)
+    num_words = get_num_words(text)
     char_dict = get_char_count(text)
     char_list = get_sorted_list(char_dict)
     print(f"--- Begin report of books/{path} ---" )
